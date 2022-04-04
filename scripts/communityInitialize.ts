@@ -22,14 +22,18 @@ async function main() {
 
   await nttContract.mint(
     communitySaleOFContractAddress,
-    constants.totalTokenSupply
+    constants.totalTokenSupply, {
+      gasPrice: 50000000000
+    }
   );
 
   console.log("ntt minted to: ", communitySaleOFContractAddress);
 
-  await nttContract.approveAddressForTransfer(communitySaleOFContractAddress);
+  await nttContract.approveAddressForTransfer(communitySaleOFContractAddress, {
+    gasPrice: 50000000000
+  });
 
-  console.log("community sale contract adress approved: ");
+  console.log("community sale contract address approved: ");
 }
 
 // We recommend this pattern to be able to use async/await everywhere

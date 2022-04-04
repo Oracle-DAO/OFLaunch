@@ -20,7 +20,9 @@ async function main() {
     communitySaleOFContractAddress
   );
 
-  await communitySaleOFContract.withdrawRaisedAmount();
+  await communitySaleOFContract.withdrawRaisedAmount({
+      gasPrice: 50000000000
+    });
 }
 
 // We recommend this pattern to be able to use async/await everywhere

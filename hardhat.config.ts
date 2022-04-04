@@ -30,6 +30,17 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    oasis: {
+      url: "https://testnet.emerald.oasis.dev",
+      accounts: [
+
+      ],
+    },
+    oasis_mainnet: {
+      url: "https://rpc.emerald.oasis.doorgod.io:7545/",
+      accounts:
+          process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
@@ -38,6 +49,7 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
+
 };
 
 export default config;
