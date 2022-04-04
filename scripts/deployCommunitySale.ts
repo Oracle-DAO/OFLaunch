@@ -21,7 +21,9 @@ async function main() {
     constants.totalTokenSupply,
     constants.maxTokenPerUser,
     startTime,
-    endTime
+    endTime, {
+        gasPrice: 50000000000
+      }
   );
 
   await communitySaleOF.deployed();
