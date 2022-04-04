@@ -41,6 +41,12 @@ const config: HardhatUserConfig = {
       accounts:
           process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+
+    oasis_mainnet_prod: {
+      url: "https://rpc.emerald.oasis.doorgod.io:7545/",
+      accounts:
+          process.env.PRIVATE_KEY_MAIN !== undefined ? [process.env.PRIVATE_KEY_MAIN] : [],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

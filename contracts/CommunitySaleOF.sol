@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: Apache 2.0
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -364,14 +364,6 @@ contract CommunitySaleOF {
 
     // ============= User Actions =================
 
-    function _whitelistUser(address to_) internal {
-        whiteListedUser[to_] = 1;
-    }
-
-    function _waitlistUser(address to_) internal {
-        waitListUser[to_] = 1;
-    }
-
     function removeWaitlistedUser(address to_) external onlyCaller {
         waitListUser[to_] = 0;
     }
@@ -381,17 +373,11 @@ contract CommunitySaleOF {
     }
 
     function whitelistUser(address to_) external onlyCaller {
-        _whitelistUser(to_);
+        whiteListedUser[to_] = 1;
     }
 
     function waitlistUser(address to_) external onlyCaller {
-        _whitelistUser(to_);
-    }
-
-    function whitelistUsers(address[] calldata userList) external onlyCaller {
-        for(uint32 i=0; i<userList.length; i++){
-            _whitelistUser(userList[i]);
-        }
+        waitListUser[to_] = 1;
     }
 
     // ============= User Actions =================
@@ -401,7 +387,7 @@ contract CommunitySaleOF {
         require(contractStatus, "Sale Contract is Inactive");
         if(isWaitlistEnabled) {
             require(waitListUser[msg.sender] == 1 || whiteListedUser[msg.sender] == 1, "User is not in whitelist or waitlist");
-        } else{
+        } else {
             require(whiteListedUser[msg.sender] == 1, "User is not whitelisted");
         }
         require(amount_ > 0, "invalid amount");
@@ -411,7 +397,7 @@ contract CommunitySaleOF {
 
         uint256 value = payoutFor(amount_);
         require(userToTokenAmount[msg.sender].add(value) <= maxTokenPerUser, "Token amount exceed");
-        if(userToTokenAmount[msg.sender]  == 0){
+        if(userToTokenAmount[msg.sender] == 0){
             totalParticipatedUser += 1;
         }
 

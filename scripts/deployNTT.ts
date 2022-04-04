@@ -4,7 +4,9 @@ import { saveFrontendFiles } from "./helpers";
 
 async function main() {
   const NttFact = await ethers.getContractFactory("NTT");
-  const nttContract = await NttFact.deploy();
+  const nttContract = await NttFact.deploy({
+    gasPrice: 40000000000
+  });
 
   await nttContract.deployed();
 
