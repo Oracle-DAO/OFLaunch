@@ -15,11 +15,11 @@ async function main() {
 
   console.log("Token address of communitySaleOF:", communitySaleOF.address);
 
-  fs.createReadStream("/data/whitelist.csv")
+  fs.createReadStream("/data/waitlist.csv")
     .pipe(csv())
     .on("data", async (row: string) => {
-      await communitySaleOF.whitelistUser(row);
-      console.log("whitelisting completed for:", row);
+      await communitySaleOF.waitlistUser(row);
+      console.log("waitlisting completed for:", row);
     })
     .on("end", () => {
       console.log("CSV file successfully processed");
