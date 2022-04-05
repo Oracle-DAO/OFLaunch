@@ -37,6 +37,7 @@
     "@openzeppelin/contracts": "^4.5.0",
     "@openzeppelin/contracts-upgradeable": "^4.5.1",
     "@poanet/solidity-flattener": "^3.0.7",
+    "csv-parse": "^5.0.4",
     "csv-parser": "^3.0.0",
     "hardhat-tracer": "^1.0.0-alpha.6"
   }
