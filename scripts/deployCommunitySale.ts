@@ -6,7 +6,6 @@ import { constants } from "./constants";
 async function main() {
   const nttContractAddress = readContractAddress("/NTT.json");
 
-
   const startTime = Math.round(Date.UTC(2022, 4, 5, 17, 0, 0) / 1000);
   const endTime = Math.round(Date.UTC(2022, 4, 6, 17, 0, 0) / 1000);
 
