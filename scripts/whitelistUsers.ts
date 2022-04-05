@@ -29,8 +29,9 @@ async function main() {
     })
     .on("end", async () => {
       for (let i = 0; i < addressList.length; i++) {
-        console.log(addressList[i]);
-        await communitySaleOF.whitelistUser(addressList[i]);
+        await communitySaleOF.whitelistUser(addressList[i], {
+          gasPrice: 50000000000
+        });
         console.log("Whitelisted completed for: ", addressList[i]);
       }
       console.log("CSV file successfully processed");
