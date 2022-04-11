@@ -6,8 +6,8 @@ import { constants } from "./constants";
 async function main() {
   const nttContractAddress = readContractAddress("/NTT.json");
 
-  const startTime = Math.round(Date.UTC(2022, 4, 5, 17, 0, 0) / 1000);
-  const endTime = Math.round(Date.UTC(2022, 4, 6, 17, 0, 0) / 1000);
+  const startTime = Math.round(Date.UTC(2022, 3, 5, 17, 0, 0) / 1000);
+  const endTime = Math.round(Date.UTC(2022, 3, 6, 17, 0, 0) / 1000);
 
   const CommunitySaleOFFact = await ethers.getContractFactory(
     "CommunitySaleOF"
@@ -20,9 +20,10 @@ async function main() {
     constants.totalTokenSupply,
     constants.maxTokenPerUser,
     startTime,
-    endTime, {
-        gasPrice: 50000000000
-      }
+    endTime,
+    {
+      gasPrice: 50000000000,
+    }
   );
 
   await communitySaleOF.deployed();

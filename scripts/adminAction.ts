@@ -5,13 +5,9 @@ import { readContractAddress} from "./helpers";
 import { constants } from "./constants";
 
 async function main() {
-  const nttContractAddress = readContractAddress("/NTT.json");
   const communitySaleOFContractAddress = readContractAddress(
     "/CommunitySaleOF.json"
   );
-
-  const nttContractFact = await ethers.getContractFactory("NTT");
-  const nttContract = await nttContractFact.attach(nttContractAddress);
 
   const CommunitySaleOFFact = await ethers.getContractFactory(
     "CommunitySaleOF"
@@ -21,7 +17,7 @@ async function main() {
   );
 
   await communitySaleOFContract.withdrawRaisedAmount({
-      gasPrice: 50000000000
+      gasPrice: 100000000000
     });
 }
 

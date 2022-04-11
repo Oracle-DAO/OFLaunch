@@ -4,6 +4,7 @@ export class constants {
 
   public static tokenPrice = "1000000"; // 1e6
   public static totalTokenSupply = "100000000000000000000000"; // 1e23
+  public static totalPublicSaleTokenSupply = "400000000000000000000000"; // 1e23
   public static maxTokenPerUser = "10000000000000000000000"; // 1e22
   public static amountToRaise = "100000000000"; // 1e11
 }
