@@ -14,9 +14,6 @@ async function main() {
   const communitySaleOF = await CommunitySaleOFFact.attach(communitySaleOFAdd);
 
   console.log("Token address of communitySaleOF:", communitySaleOF.address);
-
-  const csvData = [];
-
   const addressList: string[] = [];
 
   fs.createReadStream("scripts/data/whitelist.csv")
@@ -30,13 +27,12 @@ async function main() {
     .on("end", async () => {
       for (let i = 0; i < addressList.length; i++) {
         await communitySaleOF.whitelistUser(addressList[i], {
-          gasPrice: 50000000000
+          gasPrice: 50000000000,
         });
         console.log("Whitelisted completed for: ", addressList[i]);
       }
       console.log("CSV file successfully processed");
     });
-
 }
 
 main().catch((error) => {

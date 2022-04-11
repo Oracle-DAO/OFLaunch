@@ -20,9 +20,10 @@ async function main() {
     constants.totalTokenSupply,
     constants.maxTokenPerUser,
     startTime,
-    endTime, {
-        gasPrice: 50000000000
-      }
+    endTime,
+    {
+      gasPrice: 50000000000,
+    }
   );
 
   await communitySaleOF.deployed();
