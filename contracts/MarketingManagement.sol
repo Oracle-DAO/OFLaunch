@@ -179,7 +179,7 @@ contract MarketingManagement {
     }
 
     modifier onlyMarketingManager() {
-        require(managerAllowance[msg.sender] > 0 || msg.sender == _owner, 'Not a marketing manager');
+        require(managerAllowance[msg.sender] > 0, 'Not a marketing manager');
         _;
     }
 
