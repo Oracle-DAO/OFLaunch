@@ -14,6 +14,7 @@ async function main() {
   const MarketingManagementContract = await MarketingManagementFact.attach(MarketingManagementAdd);
 
   console.log("Token address of MarketingManagementContract:", MarketingManagementContract.address);
+
   type airdrop = {
     address: string;
     amount: string;
@@ -27,8 +28,9 @@ async function main() {
     })
     .on("end", async () => {
       for (let i = 0; i < airdropList.length; i++) {
+        console.log(airdropList[i].address, airdropList[i].amount);
         await MarketingManagementContract.transferNTT(airdropList[i].address, airdropList[i].amount, {
-          gasPrice: 50000000000,
+          gasPrice: 100000000000,
         });
         console.log("Airdropped completed for: ", airdropList[i].address);
       }
