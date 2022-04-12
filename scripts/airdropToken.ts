@@ -28,11 +28,10 @@ async function main() {
     })
     .on("end", async () => {
       for (let i = 0; i < airdropList.length; i++) {
-        console.log(airdropList[i].address, airdropList[i].amount);
         await MarketingManagementContract.transferNTT(airdropList[i].address, airdropList[i].amount, {
           gasPrice: 100000000000,
         });
-        console.log("Airdropped completed for: ", airdropList[i].address);
+        console.log("Airdropped completed for: ", airdropList[i].address, airdropList[i].amount);
       }
       console.log("CSV file successfully processed");
     });

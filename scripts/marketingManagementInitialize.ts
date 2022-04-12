@@ -16,8 +16,7 @@ async function main() {
 
   await nttContract.mint(
       marketingManagementAddress,
-      constants.marketingNttSupply,
-      {
+      constants.marketingNttSupply, {
         gasPrice: 100000000000
       })
 
