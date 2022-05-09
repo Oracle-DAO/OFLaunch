@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 // eslint-disable-next-line node/no-missing-import
-import { readContractAddress } from "./helpers";
+import { readContractAddress } from "../helpers";
 import fs from "fs";
 
 import csv from "csv-parser";

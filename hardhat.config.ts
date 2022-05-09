@@ -30,22 +30,17 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-    oasis: {
-      url: "https://testnet.emerald.oasis.dev",
-      accounts: [
-
-      ],
-    },
-    oasis_mainnet: {
-      url: "https://rpc.emerald.oasis.doorgod.io:7545/",
+    polygon: {
+      url: "https://rpc-mainnet.matic.network",
       accounts:
-          process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-
-    oasis_mainnet_prod: {
-      url: "https://rpc.emerald.oasis.doorgod.io:7545/",
+    mumbai: {
+      url: "https://rpc-mumbai.maticvigil.com/v1/359ff5efa8f5b3f88dda7197b743de8312f31344",
       accounts:
-          process.env.PRIVATE_KEY_MAIN !== undefined ? [process.env.PRIVATE_KEY_MAIN] : [],
+        process.env.TEST_PTIVATE_KEY !== undefined
+          ? [process.env.TEST_PTIVATE_KEY]
+          : [],
     },
   },
   gasReporter: {
@@ -53,9 +48,8 @@ const config: HardhatUserConfig = {
     currency: "USD",
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.ETHERSCAN_KEY,
   },
-
 };
 
 export default config;

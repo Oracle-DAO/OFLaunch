@@ -1,8 +1,8 @@
 import { ethers } from "hardhat";
 // eslint-disable-next-line node/no-missing-import
-import { readContractAddress } from "./helpers";
+import { readContractAddress } from "../helpers";
 // eslint-disable-next-line node/no-missing-import
-import { constants } from "./constants";
+import { constants } from "../constants";
 
 async function main() {
   const nttContractAddress = readContractAddress("/NTT.json");
@@ -13,24 +13,18 @@ async function main() {
   const nttContractFact = await ethers.getContractFactory("NTT");
   const nttContract = await nttContractFact.attach(nttContractAddress);
 
-  const CommunitySaleOFFact = await ethers.getContractFactory(
-    "CommunitySaleOF"
-  );
-  const communitySaleOFContract = await CommunitySaleOFFact.attach(
-    communitySaleOFContractAddress
-  );
-
   await nttContract.mint(
     communitySaleOFContractAddress,
-    constants.totalTokenSupply, {
-      gasPrice: 50000000000
+    constants.totalCommunitySupply,
+    {
+      gasPrice: 50000000000,
     }
   );
 
   console.log("ntt minted to: ", communitySaleOFContractAddress);
 
   await nttContract.approveAddressForTransfer(communitySaleOFContractAddress, {
-    gasPrice: 50000000000
+    gasPrice: 50000000000,
   });
 
   console.log("community sale contract address approved: ");

@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 // eslint-disable-next-line node/no-missing-import
-import { readContractAddress, saveFrontendFiles } from "./helpers";
-import { constants } from "./constants";
+import { readContractAddress, saveFrontendFiles } from "../helpers";
+import { constants } from "../constants";
 
 async function main() {
   const nttContractAddress = readContractAddress("/NTT.json");
@@ -17,7 +17,7 @@ async function main() {
     constants.usdtMainnetAddress,
     constants.tokenPrice,
     constants.amountToRaise,
-    constants.totalTokenSupply,
+    constants.totalCommunitySupply,
     constants.maxTokenPerUser,
     startTime,
     endTime,
