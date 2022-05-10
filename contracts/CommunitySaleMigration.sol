@@ -159,12 +159,12 @@ library LowGasSafeMath {
     }
 }
 
-contract MarketingManagement {
+contract CommunitySaleMigration {
 
     event ManagerAllowanceUpdated(address indexed account, uint256 amount);
 
-    mapping(address => uint256) public managerAllowance;
-    uint256 public totalRemainingMarketingTokens;
+    mapping(address => uint256) public reserveManagerAllowance;
+    uint256 public remainingTokens;
     using SafeERC20 for IERC20;
     using LowGasSafeMath for uint256;
     using LowGasSafeMath for uint32;
@@ -174,12 +174,12 @@ contract MarketingManagement {
     constructor(address nttAddress_) {
         require(nttAddress_ != address(0));
         _owner = msg.sender;
-        totalRemainingMarketingTokens = (1e23);
+        remainingTokens = (1e23);
         nttContract = IERC20(nttAddress_);
     }
 
     modifier onlyMarketingManager() {
-        require(managerAllowance[msg.sender] > 0, 'Not a marketing manager');
+        require(reserveManagerAllowance[msg.sender] > 0, 'Not a marketing manager');
         _;
     }
 
@@ -191,15 +191,15 @@ contract MarketingManagement {
     function approveManagerAllowance(address account_, uint256 amount_) external onlyOwner {
         require(account_ != address(0));
         require(amount_ > 0, "amount should be GT 0");
-        managerAllowance[account_] += amount_;
+        reserveManagerAllowance[account_] += amount_;
         emit ManagerAllowanceUpdated(account_, amount_);
     }
 
     function decreaseManagerAllowance(address account_, uint256 amount_) external onlyOwner {
         require(account_ != address(0));
         require(amount_ > 0, "amount should be GT 0");
-        require(managerAllowance[account_].sub(amount_) > 0, 'Amount GT than allowance');
-        managerAllowance[account_] -= amount_;
+        require(reserveManagerAllowance[account_].sub(amount_) > 0, 'Amount GT than allowance');
+        reserveManagerAllowance[account_] -= amount_;
         emit ManagerAllowanceUpdated(account_, amount_);
     }
 
@@ -207,8 +207,8 @@ contract MarketingManagement {
         require(account_ != address(0));
         require(amount_ > 0, "amount should be GT 0");
 
-        managerAllowance[msg.sender] = managerAllowance[msg.sender].sub(amount_);
-        totalRemainingMarketingTokens -= amount_;
+        reserveManagerAllowance[msg.sender] = reserveManagerAllowance[msg.sender].sub(amount_);
+        remainingTokens -= amount_;
         nttContract.safeTransfer(account_, amount_);
     }
 }

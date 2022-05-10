@@ -1,11 +1,11 @@
 import { ethers } from "hardhat";
 // eslint-disable-next-line node/no-missing-import
-import { saveFrontendFiles } from "./helpers";
+import { saveFrontendFiles } from "../helpers";
 
 async function main() {
   const NttFact = await ethers.getContractFactory("NTT");
   const nttContract = await NttFact.deploy({
-    gasPrice: 40000000000
+    gasPrice: 40000000000,
   });
 
   await nttContract.deployed();
