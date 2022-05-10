@@ -42,6 +42,13 @@ const config: HardhatUserConfig = {
           ? [process.env.TEST_PTIVATE_KEY]
           : [],
     },
+    metis: {
+      url: "https://stardust.metis.io/?owner=588",
+      accounts:
+          process.env.TEST_PTIVATE_KEY !== undefined
+              ? [process.env.TEST_PTIVATE_KEY]
+              : [],
+    }
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

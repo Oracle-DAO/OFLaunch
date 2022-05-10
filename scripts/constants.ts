@@ -7,7 +7,6 @@ export class constants {
   public static tokenPriceInFairLaunch = "1400000"; // 1e6
   public static totalCommunitySupply = "100000000000000000000000"; // 1e23
   public static totalPublicPresaleSupply = "100000000000000000000000"; // 1e23
-  public static totalFairLaunchSupply = "200000000000000000000000"; // 1e23
   public static totalPublicPreSaleTokenSupply = "100000000000000000000000"; // 1e23
   public static maxTokenPerUser = "10000000000000000000000"; // 1e22
   public static amountToRaise = "100000000000"; // 1e11
