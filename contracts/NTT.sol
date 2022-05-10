@@ -23,7 +23,7 @@ contract NTT is  Context, Ownable, ERC20 {
     constructor() ERC20('Oracle NTT', 'nORFI') {
         redeemable = false;
         transferApprovedAddress[msg.sender] = true;
-        totalNTTSupply = 45*1e23;
+        totalNTTSupply = 9*1e23;
         totalNTTMinted = 0;
     }
 

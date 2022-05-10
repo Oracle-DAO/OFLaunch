@@ -1,8 +1,8 @@
 import { ethers } from "hardhat";
 // eslint-disable-next-line node/no-missing-import
-import { readContractAddress} from "./helpers";
+import { readContractAddress } from "../helpers";
 // eslint-disable-next-line node/no-missing-import
-import { constants } from "./constants";
+import { constants } from "../constants";
 
 async function main() {
   const communitySaleOFContractAddress = readContractAddress(
@@ -17,8 +17,8 @@ async function main() {
   );
 
   await communitySaleOFContract.withdrawRaisedAmount({
-      gasPrice: 100000000000
-    });
+    gasPrice: 100000000000,
+  });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
