@@ -15,6 +15,10 @@ contract MockORFI is ERC20 {
         owner = msg.sender;
     }
 
+    function decimals() public view override returns (uint8) {
+        return 6;
+    }
+
     function setNttContractAddress(address nttContractAddress_) external {
         require(msg.sender == owner, "Caller is not Owner");
         require(nttContractAddress_ != address(0));

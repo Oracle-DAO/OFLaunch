@@ -283,7 +283,6 @@ contract PublicPresaleOF {
     using LowGasSafeMath for uint32;
 
     mapping(address => uint256) public userToTokenAmount;
-    mapping(address => uint8) public whiteListedUser;
     uint256 public totalTokenSupply;
     uint256 public totalAmountRaised;
     uint256 public totalAmountToRaise;
@@ -293,6 +292,7 @@ contract PublicPresaleOF {
     uint32 public endTimestamp;
     bool public contractStatus;
     uint256 public timeFrame;
+    string private salt;
 
     IERC20 private projectToken;
     IERC20 private principalToken;
@@ -369,20 +369,16 @@ contract PublicPresaleOF {
 
     // ============= User Actions =================
 
-    function removeWhitelistedUser(address to_) external onlyCaller {
-        whiteListedUser[to_] = 0;
-    }
-
-    function whitelistUser(address to_) external onlyCaller {
-        whiteListedUser[to_] = 1;
+    function setSalt(string memory salt_) external onlyCaller {
+        salt = salt_;
     }
 
     // ============= User Actions =================
 
     // don't forget to approve the principal token
-    function participate(uint256 amount_) external {
+    function participate(uint256 amount_, string memory salt_) external {
         require(contractStatus, "Sale Contract is Inactive");
-        require(whiteListedUser[msg.sender] == 1, "User is not whitelisted");
+        require(keccak256(bytes(salt)) == keccak256(bytes(salt_)), "Only Salt no sugar !!");
         require(amount_ > 0, "invalid amount");
         require(startTimestamp < block.timestamp, "project not live");
         require(endTimestamp > block.timestamp, "project has ended");
