@@ -31,7 +31,7 @@ const config: HardhatUserConfig = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     polygon: {
-      url: "https://rpc-mainnet.matic.network",
+      url: "https://polygon-mainnet.g.alchemy.com/v2/-uRy8IMZxGnHG4EeeXSfBxzdjFxac4j4",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
@@ -45,10 +45,17 @@ const config: HardhatUserConfig = {
     metis: {
       url: "https://stardust.metis.io/?owner=588",
       accounts:
-          process.env.TEST_PTIVATE_KEY !== undefined
-              ? [process.env.TEST_PTIVATE_KEY]
-              : [],
-    }
+        process.env.TEST_PTIVATE_KEY !== undefined
+          ? [process.env.TEST_PTIVATE_KEY]
+          : [],
+    },
+    oasis: {
+      url: "https://emerald.oasis.dev",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined
+          ? [process.env.PRIVATE_KEY]
+          : [],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

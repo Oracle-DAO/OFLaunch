@@ -40,7 +40,7 @@ async function main() {
 
   await MarketingManagementContract.approveManagerAllowance(
     deployer.address,
-    "500000000000000000000000",
+    "100000000000000000000000",
     {
       gasPrice: 100000000000,
     }

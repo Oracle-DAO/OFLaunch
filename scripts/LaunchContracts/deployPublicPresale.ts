@@ -7,8 +7,8 @@ import { constants } from "../constants";
 async function main() {
   const nttContractAddress = readContractAddress("/NTT.json");
 
-  const startTime = Math.round(Date.UTC(2022, 4, 12, 17, 0, 0) / 1000);
-  const endTime = Math.round(Date.UTC(2022, 4, 13, 17, 0, 0) / 1000);
+  const startTime = Math.round(Date.UTC(2022, 4, 25, 17, 0, 0) / 1000);
+  const endTime = Math.round(Date.UTC(2022, 4, 26, 17, 0, 0) / 1000);
   console.log(startTime);
   console.log(endTime);
   const PublicPresaleOF = await ethers.getContractFactory("PublicPresaleOF");
@@ -20,7 +20,7 @@ async function main() {
     constants.totalPublicPresaleSupply,
     startTime,
     endTime]
-  console.log(constructor_args)
+  console.log(constructor_args);
   const publicPresaleOF = await PublicPresaleOF.deploy(
     nttContractAddress,
     constants.usdtMainnetAddress,
@@ -30,7 +30,7 @@ async function main() {
     startTime,
     endTime,
     {
-      gasPrice: 40000000000,
+      gasPrice: 100000000000,
     }
   );
 

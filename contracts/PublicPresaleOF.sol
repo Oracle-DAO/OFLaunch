@@ -397,8 +397,12 @@ contract PublicPresaleOF {
     }
 
     function maxAllocation() public view returns(uint256 _token) {
-        uint256 timeBlocks = (uint32(block.timestamp).sub32(startTimestamp)).div(timeFrame);
+        uint256 timeBlocks = getTimeBlocks();
         _token = (timeBlocks > 20 ? 5000 : 2500 + (125 * timeBlocks))*10**18;
+    }
+
+    function getTimeBlocks() public view returns(uint256 _blocks){
+        _blocks = uint256(uint32(block.timestamp).sub32(startTimestamp)).div(timeFrame);
     }
 
     function maxTokensForUser(address _userAddress) public view returns(uint256) {

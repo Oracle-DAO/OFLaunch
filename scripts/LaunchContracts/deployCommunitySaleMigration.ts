@@ -10,7 +10,8 @@ async function main() {
     "CommunitySaleMigration"
   );
   const communitySaleMigration = await CommunitySaleMigrationFact.deploy(
-    nttContractAddress
+    nttContractAddress,
+    { gasPrice: 200000000000 }
   );
 
   await communitySaleMigration.deployed();
